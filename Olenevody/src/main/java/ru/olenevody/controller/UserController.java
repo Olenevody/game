@@ -21,6 +21,7 @@ public class UserController {
 
 	@RequestMapping(value = "/save-json-user", method = RequestMethod.POST, consumes = "application/json")
 	// dbulavka
+	//test
 	public ResponseEntity<String> saveJsonUser(@RequestBody User user) {
 		User savedUser = userDAO.save(user);
 		return new ResponseEntity<String>(savedUser != null ? HttpStatus.OK : HttpStatus.BAD_REQUEST);

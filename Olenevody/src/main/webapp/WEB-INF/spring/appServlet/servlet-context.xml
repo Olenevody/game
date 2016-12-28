@@ -33,7 +33,7 @@
 		<beans:property name="url"
 			value="jdbc:mysql://localhost:3306/olenevody" />
 		<beans:property name="username" value="root" />
-		<beans:property name="password" value="Mdvalubuer22" />
+		<beans:property name="password" value="вуИ4щРлф" />
 	</beans:bean>
 
 	<!-- Hibernate 4 SessionFactory Bean definition -->
