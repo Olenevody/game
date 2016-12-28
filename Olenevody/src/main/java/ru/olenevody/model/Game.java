@@ -27,14 +27,14 @@ public class Game {
 	Date date;
 
 	String legend;
-
+	String location;
 	String author;
 
 	public Game() {
 		super();
 	}
 
-	public Game(int id, String num, String name, Date date, String legend, String author) {
+	public Game(int id, String num, String name, Date date, String legend, String location, String author) {
 		super();
 		this.id = id;
 		this.num = num;
@@ -82,6 +82,14 @@ public class Game {
 
 	public void setLegend(String legend) {
 		this.legend = legend;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
 	}
 
 	public String getAuthor() {

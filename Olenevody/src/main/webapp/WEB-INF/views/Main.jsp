@@ -47,6 +47,7 @@
 										<th>Email</th>
 										<th>Дата регистрации</th>
 										<th>Права</th>
+										<th>Редактировать</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -58,6 +59,7 @@
 											<td>${user.email}</td>
 											<td>${user.date}</td>
 											<td>${user.role}</td>
+											<td><a href="#">Edit</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -118,7 +120,7 @@
 											<td>${game.name}</td>
 											<td>${game.date}</td>
 											<td></td>
-											<td><a href="<c:url value="/EditGame/" /> ${game.id}">Edit</a></td>
+											<td><a href="<c:url value="/EditGame/" />${game.id}">Edit</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>

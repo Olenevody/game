@@ -1,7 +1,5 @@
 package ru.olenevody.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +12,6 @@ import ru.olenevody.model.Game;
 
 @Controller
 public class EditGameController {
-
-	private static final Logger logger = LoggerFactory.getLogger(EditGameController.class);
 
 	@Autowired
 	GameDAO gameDAO;

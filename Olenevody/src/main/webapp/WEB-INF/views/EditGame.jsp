@@ -47,7 +47,25 @@
 						<div class="form-group row">
 							<label for="date" class="col-xs-2 col-form-label">Дата</label>
 							<div class="col-xs-10">
-								<input class="form-control" type="text" id="date" value="${game.date}" >
+								<input class="form-control" type="text" id="date" value="${game.date}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="location" class="col-xs-2 col-form-label">Зона игры</label>
+							<div class="col-xs-10">
+								<input class="form-control" type="text" id="location" value="${game.location}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="author" class="col-xs-2 col-form-label">Авторы</label>
+							<div class="col-xs-10">
+								<input class="form-control" type="text" id="author" value="${game.author}">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="legend" class="col-xs-2 col-form-label">Легенда</label>
+							<div class="col-xs-10">
+								<textarea class="form-control" rows="5" id="legend" value="${game.legend}"></textarea>
 							</div>
 						</div>
 						<!-- 						<div class="table-responsive"> -->

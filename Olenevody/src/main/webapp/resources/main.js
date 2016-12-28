@@ -6,14 +6,16 @@ var editUser = {
 	role : $('#editUserRole')
 }
 
-$('#Users tbody tr').on('click', function() {
-	var cols = $("td", this);
+$('#Users tbody a').on('click', function(event) {
+	event.preventDefault();
+	var cols = $('td', $('#Users tbody a').closest("tr"));
 	editUser.id.val(cols.eq(1).html());
 	editUser.name.val(cols.eq(2).html());
 	editUser.email.val(cols.eq(3).html());
 	editUser.date.val(cols.eq(4).html());
 	editUser.role.val(cols.eq(5).html());
 	$('#editUser').modal({
+		backdrop: 'static',
 		show : true
 	})
 })
