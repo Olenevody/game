@@ -19,28 +19,25 @@ public class UserController {
 	@Autowired
 	UserDAO userDAO;
 
-	@RequestMapping(value = "/save-json-user", method = RequestMethod.POST, consumes = "application/json")
-	// dbulavka
-	//test
+	@RequestMapping(value = "/Save-json-user", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<String> saveJsonUser(@RequestBody User user) {
 		User savedUser = userDAO.save(user);
 		return new ResponseEntity<String>(savedUser != null ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
 	}
 
-	@RequestMapping(value = "/update-json-user", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/Update-json-user", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<String> updateJsonUser(@RequestBody User user) {
 		User savedUser = userDAO.update(user);
-		int a = 0;
 		return new ResponseEntity<String>(savedUser != null ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
 	}
 
-	@RequestMapping(value = "/delete-json-user", method = RequestMethod.POST, consumes = "application/json")
+	@RequestMapping(value = "/Delete-json-user", method = RequestMethod.POST, consumes = "application/json")
 	public ResponseEntity<String> removeJsonUser(@RequestBody User user) {
 		User savedUser = userDAO.delete(user);
 		return new ResponseEntity<String>(savedUser != null ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
 	}
 
-	@RequestMapping(value = "/updateUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/UpdateUser", method = RequestMethod.POST)
 	public ModelAndView updateUser(@ModelAttribute("editUser") User user) {
 		userDAO.update(user);
 		return new ModelAndView("redirect: /Olenevody/");

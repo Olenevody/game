@@ -36,11 +36,11 @@
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="Users">
 						<h1 class="page-header">Пользователи</h1>
-						<button id="editUserBtn" type="button" data-toggle="modal" data-target="#editUser" hidden="true">Edit user</button>
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
 									<tr class="bg-primary">
+										<th><input type="checkbox" /></th>
 										<th>#</th>
 										<th>ID</th>
 										<th>Логин</th>
@@ -53,6 +53,7 @@
 								<tbody>
 									<c:forEach items="${usersList}" var="user" varStatus="status">
 										<tr>
+											<td><input type="checkbox" /></td>
 											<td>${status.count}</td>
 											<td>${user.id}</td>
 											<td>${user.name}</td>
@@ -72,6 +73,7 @@
 							<table class="table table-striped">
 								<thead>
 									<tr class="bg-primary">
+										<th><input type="checkbox" /></th>
 										<th>#</th>
 										<th>ID</th>
 										<th>Название</th>
@@ -83,6 +85,7 @@
 								<tbody>
 									<c:forEach items="${teamsList}" var="team" varStatus="status">
 										<tr>
+											<td><input type="checkbox" /></td>
 											<td>${status.count}</td>
 											<td>${team.id}</td>
 											<td>${team.name}</td>
@@ -97,11 +100,15 @@
 					</div>
 					<div role="tabpanel" class="tab-pane" id="Games">
 						<h1 class="page-header">Игры</h1>
-						<a class="btn btn-success" href="<c:url value="/EditGame/0" />">Создать</a>
+						<p>
+							<a class="btn btn-sm btn-success" href="<c:url value="/EditGame/0" />">Создать</a>
+							<a id="deleteGameBtn" class="btn btn-sm btn-danger" href="<c:url value="/DeleteGame" />">Удалить</a>
+						</p>
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
 									<tr class="bg-primary">
+										<th><input type="checkbox" /></th>
 										<th>#</th>
 										<th>ID</th>
 										<th>Номер</th>
@@ -114,6 +121,7 @@
 								<tbody>
 									<c:forEach items="${gamesList}" var="game" varStatus="status">
 										<tr>
+											<td><input type="checkbox" /></td>
 											<td>${status.count}</td>
 											<td>${game.id}</td>
 											<td>${game.num}</td>

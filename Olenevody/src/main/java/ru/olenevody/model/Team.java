@@ -31,7 +31,7 @@ public class Team {
 	String email;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn
+	@JoinColumn(name = "league")
 	League league;
 
 	public Team() {

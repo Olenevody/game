@@ -19,7 +19,7 @@
 		</div>
 		<div class="navbar-form navbar-right">
 			<a class="btn btn-default" href="<c:url value="/" />">Отмена</a>
-			<a id="btnSaveGame" class="btn btn-success">Сохранить</a>
+			<a class="btn btn-success" href="<c:url value="/EditGame/0" />">Сохранить</a>
 		</div>
 	</div>
 	</nav>
@@ -28,27 +28,24 @@
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar" role="tablist">
 					<li role="presentation" class="active"><a href="#Common" aria-controls="Common" role="tab" data-toggle="tab">Основное</a></li>
-					<li role="presentation"><a href="#Levels" aria-controls="Levels" role="tab" data-toggle="tab">Задания</a></li>
-					<li role="presentation"><a href="#Lines" aria-controls="Lines" role="tab" data-toggle="tab">Линейки</a></li>
+					<li role="presentation"><a href="#Codes" aria-controls="Codes" role="tab" data-toggle="tab">Коды</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane active" id="Common">
 						<h1 class="page-header">Основное</h1>
-						<c:url var="action"  value="/SaveGame" />
-						<form:form method="POST" commandName="game" action="${action}">
-							<form:input class="form-control" type="hidden" path="id" value="${game.id}" />
+						<form:form method="POST" commandName="game" action="saveLevel">
 							<div class="form-group row">
-								<form:label path="num" class="col-xs-2 col-form-label">Номер</form:label>
+								<label for="number" class="col-xs-2 col-form-label">Номер</label>
 								<div class="col-xs-10">
-									<form:input class="form-control" type="number" path="num" value="${game.num}" />
+									<input class="form-control" type="text" id="number" value="${game.num}">
 								</div>
 							</div>
 							<div class="form-group row">
-								<form:label path="name" class="col-xs-2 col-form-label">Название</form:label>
+								<label for="name" class="col-xs-2 col-form-label">Название</label>
 								<div class="col-xs-10">
-									<form:input class="form-control" path="name" value="${game.name}" />
+									<input class="form-control" type="search" id="name" value="${game.name}">
 								</div>
 							</div>
 							<div class="form-group row">
@@ -72,38 +69,34 @@
 							<div class="form-group row">
 								<label for="legend" class="col-xs-2 col-form-label">Легенда</label>
 								<div class="col-xs-10">
-									<textarea class="form-control" rows="5" id="legend" >${game.legend}</textarea>
+									<textarea class="form-control" rows="5" id="legend" value="${game.legend}"></textarea>
 								</div>
 							</div>
 						</form:form>
 					</div>
-					<div role="tabpanel" class="tab-pane" id="Levels">
-						<h1 class="page-header">Задания</h1>
+					<div role="tabpanel" class="tab-pane" id="Codes">
+						<h1 class="page-header">Коды</h1>
 						<p>
-							<a class="btn btn-sm btn-success" href="<c:url value="/EditLevel/0" />">Создать</a>
-							<a class="btn btn-sm btn-danger" href="<c:url value="/" />">Удалить</a>
+							<button id="addCodeBtn" class="btn btn-sm btn-success">Добавить</button>
+							<button id="removeCodeBtn" class="btn btn-sm btn-danger">Удалить</button>
 						</p>
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
 									<tr class="bg-primary">
-										<th><input type="checkbox" /></th>
-										<th>#</th>
-										<th>ID</th>
-										<th>Название</th>
-										<th>Тип</th>
-										<th>Редактировать</th>
+										<th><input type="checkbox"></th>
+										<th>Номер</th>
+										<th>Код</th>
+										<th>КО</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${levelsList}" var="level" varStatus="status">
+									<c:forEach items="${codesList}" var="code" varStatus="status">
 										<tr>
 											<td><input type="checkbox"></td>
-											<td>${status.count}</td>
-											<td>${level.id}</td>
+											<td><input type="number" value="${code.num}" /></td>
 											<td>${level.name}</td>
 											<td>${level.type}</td>
-											<td><a href="<c:url value="/EditLevel/" />${level.id}">Edit</a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -151,6 +144,6 @@
 	<script src="<c:url value="/resources/jquery-3.1.1.min.js" />"></script>
 	<script src="<c:url value="/resources/bootstrap.min.js" />"></script>
 	<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-	<script src="<c:url value="/resources/editGame.js" />"></script>
+	<script src="<c:url value="/resources/editLevel.js" />"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package ru.olenevody.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -8,10 +9,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import ru.olenevody.model.Game;
+import ru.olenevody.model.Code;
+import ru.olenevody.model.Level;
 
 @Controller
-public class GameDAO {
+public class LevelDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -28,59 +30,72 @@ public class GameDAO {
 		}
 	}
 
-	public List<Game> getAll() {
+	public List<Level> getAll() {
 		Session session = getCurrentSession();
-		List<Game> gamesList = session.createQuery("from Game order by num").list();
+		List<Level> gamesList = session.createQuery("from Level order by id").list();
 		session.flush();
 		session.close();
 		return gamesList;
 	}
 
-	public Game getByID(int id) {
+	public Level getByID(int id) {
 		Session session = getCurrentSession();
-		Game game = (Game) session.get(Game.class, id);
-		if (game == null) {
-			game = new Game();
+		Level level = (Level) session.get(Level.class, id);
+		if (level == null) {
+			level = new Level();
 		}
 		session.flush();
 		session.close();
-		return game;
+		return level;
 	}
 
-	public Game save(Game game) {
+	public Level save(Level level) {
 		Session session = getCurrentSession();
-		session.save(game);
+		session.save(level);
 		session.flush();
 		session.close();
-		return game;
+		return level;
 	}
 
-	public Game update(Game game) {
+	public Level update(Level level) {
 		Session session = getCurrentSession();
-		session.update(game);
+		session.update(level);
 		session.flush();
 		session.close();
-		return game;
+		return level;
 	}
 
-	public Game delete(Game game) {
+	public Level delete(Level level) {
 		Session session = getCurrentSession();
-		session.delete(game);
+		session.delete(level);
 		session.flush();
 		session.close();
-		return game;
+		return level;
 	}
 
 	public int deleteById(String idList) {
 		Session session = getCurrentSession();
 		// TODO Понять почему не работает вариант с нормальной передачей
 		// параметра
-		Query query = session.createQuery("DELETE FROM Game WHERE id IN (" + idList + ")");
+		Query query = session.createQuery("DELETE FROM Level WHERE id IN (" + idList + ")");
 		// query.setString("idList", idList);
 		int count = query.executeUpdate();
 		session.flush();
 		session.close();
 		return count;
+	}
+
+	public List<Code> getCodes(Level level) {
+		if (level.getId() == 0) {
+			return new ArrayList<Code>();
+		}
+		Session session = getCurrentSession();
+		Query query = session.createQuery("from Code where level:=level order by id");
+		query.setParameter("level", level);
+		List<Code> codesList = query.list();
+		session.flush();
+		session.close();
+		return codesList;
 	}
 
 }
